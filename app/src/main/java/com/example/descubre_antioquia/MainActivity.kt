@@ -7,7 +7,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import okio.GzipSource
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
+const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        getMyData()
 
         imageId = arrayOf(
             R.drawable.piedra_1,
@@ -61,6 +66,17 @@ class MainActivity : AppCompatActivity() {
 
         newArrayList = arrayListOf<Sites>()
         getUserdata()
+    }
+
+    private fun getMyData() {
+        val retrofitBuilder = Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(BASE_URL)
+            .build()
+            .create(ApiInterface::class.java)
+
+        val retro
+
     }
 
     private fun getUserdata() {
