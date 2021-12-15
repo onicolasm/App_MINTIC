@@ -1,14 +1,9 @@
-[
-  {
-    "id": 1,
-    "title": "Post 1"
-  },
-  {
-    "id": 2,
-    "title": "Post 2"
-  },
-  {
-    "id": 3,
-    "title": "Post 3"
+{
+    "sites": [
+      { "id": 1, "title": "test1", "author": "typicode" },
+      { "id": 2, "title": "test2", "author": "typicode" },
+      { "id": 3, "title": "test3", "author": "typicode" },
+      { "id": 4, "title": "test4", "author": "typicode" },
+      { "id": 5, "title": "test5", "author": "typicode" }
+    ]
   }
-]
