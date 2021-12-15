@@ -1,6 +1,8 @@
 package com.example.descubre_antioquia
 
-data class myDataItem(
+
+
+data class MyDataItem(
     val body: String,
     val id: Int,
     val title: String,

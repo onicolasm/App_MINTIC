@@ -2,12 +2,15 @@ package com.example.descubre_antioquia
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log.d
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import okio.GzipSource
+import kotlinx.android.synthetic.main.activity_main.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -16,17 +19,24 @@ const val BASE_URL = "https://jsonplaceholder.typicode.com/"
 class MainActivity : AppCompatActivity() {
 
     private lateinit var newRecyclerView: RecyclerView
-    private lateinit var newArrayList: ArrayList<Sites>
+    private lateinit var newArrayList: ArrayList<MyDataItem>
     lateinit var imageId: Array<Int>
     lateinit var heading: Array<String>
     lateinit var detail: Array<String>
     lateinit var desc: Array<String>
+    lateinit var myRecyclerAdapter: RecyclerAdapter
+    lateinit var linearLayoutManager: LinearLayoutManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        recyclerView.setHasFixedSize(true)
+        linearLayoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = linearLayoutManager
         getMyData()
+
 
         imageId = arrayOf(
             R.drawable.piedra_1,
@@ -60,12 +70,12 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        newRecyclerView = findViewById(R.id.recyclerView)
-        newRecyclerView.layoutManager = LinearLayoutManager(this)
-        newRecyclerView.setHasFixedSize(true)
+        //newRecyclerView = findViewById(R.id.recyclerView)
+        //newRecyclerView.layoutManager = LinearLayoutManager(this)
+        //newRecyclerView.setHasFixedSize(true)
 
-        newArrayList = arrayListOf<Sites>()
-        getUserdata()
+       //newArrayList = arrayListOf<Sites>()
+        //getUserdata()
     }
 
     private fun getMyData() {
@@ -75,10 +85,31 @@ class MainActivity : AppCompatActivity() {
             .build()
             .create(ApiInterface::class.java)
 
-        val retro
+        val retrofitData = retrofitBuilder.getData()
+
+        retrofitData.enqueue(object : Callback<List<MyDataItem>?> {
+            override fun onResponse(
+                call: Call<List<MyDataItem>?>,
+                response: Response<List<MyDataItem>?>
+            ) {
+                val responseBody = response.body()!!
+
+                myRecyclerAdapter = RecyclerAdapter(baseContext,
+                    responseBody as ArrayList<MyDataItem>
+                )
+                myRecyclerAdapter.notifyDataSetChanged()
+                recyclerView.adapter = myRecyclerAdapter
+
+            }
+
+            override fun onFailure(call: Call<List<MyDataItem>?>, t: Throwable) {
+                d("MainActivity","onFailure:"+t.message)
+            }
+        })
 
     }
 
+    /*
     private fun getUserdata() {
         for (i in imageId.indices) {
             val sites = Sites(imageId[i], heading[i], detail[i])
@@ -92,8 +123,8 @@ class MainActivity : AppCompatActivity() {
                 //Toast.makeText(this@MainActivity, "You clicked on item no. $position",Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this@MainActivity, SitesActivity::class.java)
-                intent.putExtra("heading", newArrayList[position].heading)
-                intent.putExtra("imageId", newArrayList[position].titleImage)
+                //intent.putExtra("heading", newArrayList[position].heading)
+                //intent.putExtra("imageId", newArrayList[position].titleImage)
                 intent.putExtra("desc", desc[position])
 
                 startActivity(intent)
@@ -107,6 +138,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ajustesActivity::class.java)
             startActivity(intent)
         }
-    }
+    }*/
 
 }
