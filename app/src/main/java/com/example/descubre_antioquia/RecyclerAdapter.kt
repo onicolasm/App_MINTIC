@@ -36,8 +36,8 @@ class RecyclerAdapter(val context: Context, private val sitesList: ArrayList<MyD
         //holder.titleImage.setImageResource(currentItem.titleImage)
         //holder.tvHeading.text = currentItem.heading
         //holder.tvDetail.text = currentItem.detail
-        holder.userId.text = sitesList[position].userId.toString()
-        holder.title.text = sitesList[position].title
+        holder.userId.text = sitesList[position].heading
+        holder.title.text = sitesList[position].detail
 
     }
 
