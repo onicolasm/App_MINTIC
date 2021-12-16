@@ -1,9 +1,9 @@
 {
     "sites": [
-      { "heading": "Piedra del Peñol", "detail": "El peñón de Guatapé, o piedra del Peñol, es un monolito de 220 metros de altura, localizado en El Peñol-Guatapé", "titleImage": "x"},
-      { "heading": "Santa Fe de Antioquia", "detail": "Puente de Occidente. Kanaloa Parque Acuatico. Plaza Mayor Juan de Corral. Iglesia de Nuestra Señora de Chiquinquirá", "x"},
-      { "heading": "El Jardín", "detail": "Pueblo más Bonito de Antioquia, Ciudad de los muchos cerros y Monumento Nacional", "titleImage": "x" },
-      { "heading": "Estadio Atanasio Girardot", "detail": "Campo deportivo del Área Metropolitana del Valle de Aburrá", "titleImage": "x" },
-      { "heading": "Jericó", "detail": "La Atenas del suroeste antioqueño", "titleImage": "x" }
+      { "heading": "Piedra del Peñol", "detail": "El peñón de Guatapé, o piedra del Peñol, es un monolito de 220 metros de altura, localizado en El Peñol-Guatapé"},
+      { "heading": "Santa Fe de Antioquia", "detail": "Puente de Occidente. Kanaloa Parque Acuatico. Plaza Mayor Juan de Corral. Iglesia de Nuestra Señora de Chiquinquirá"},
+      { "heading": "El Jardín", "detail": "Pueblo más Bonito de Antioquia, Ciudad de los muchos cerros y Monumento Nacional"},
+      { "heading": "Estadio Atanasio Girardot", "detail": "Campo deportivo del Área Metropolitana del Valle de Aburrá"},
+      { "heading": "Jericó", "detail": "La Atenas del suroeste antioqueño"}
     ]
   }
