@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var newRecyclerView: RecyclerView
     private lateinit var newArrayList: ArrayList<MyDataItem>
-    //private lateinit var imagesArray: ArrayList<Sites>
+    private lateinit var newArrayList2: ArrayList<Sites>
     lateinit var imageId: Array<Int>
     lateinit var heading: Array<String>
     lateinit var detail: Array<String>
@@ -75,8 +75,9 @@ class MainActivity : AppCompatActivity() {
         //newRecyclerView.layoutManager = LinearLayoutManager(this)
         //newRecyclerView.setHasFixedSize(true)
 
-        //newArrayList = arrayListOf<MyDataItem>()
-        //getUserdata()
+        newArrayList = arrayListOf<MyDataItem>()
+        getUserdata()
+
     }
 
     private fun getMyData() {
@@ -110,13 +111,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-/*
-    private fun getUserdata() {
-        for (i in imageId.indices) {
-            val sites = MyDataItem(imageId[i])
-            newArrayList.add(sites)
-        }
 
+    private fun getUserdata() {
+        //for (i in imageId.indices) {
+          //  val sites = MyDataItem(imageId[i])
+            //newArrayList.add(sites)
+        //}
+    /*
         var adapter = RecyclerAdapter(newArrayList)
         newRecyclerView.adapter = adapter
         adapter.setOnItemClickListener(object : RecyclerAdapter.onItemClickListener {
@@ -124,15 +125,15 @@ class MainActivity : AppCompatActivity() {
                 //Toast.makeText(this@MainActivity, "You clicked on item no. $position",Toast.LENGTH_SHORT).show()
 
                 val intent = Intent(this@MainActivity, SitesActivity::class.java)
-                //intent.putExtra("heading", newArrayList[position].heading)
-                //intent.putExtra("imageId", newArrayList[position].titleImage)
+                intent.putExtra("heading", newArrayList[position].heading)
+                intent.putExtra("imageId", newArrayList[position].titleImage)
                 intent.putExtra("desc", desc[position])
 
                 startActivity(intent)
 
 
             }
-        })
+        })*/
 
         val buttonClick = findViewById<Button>(R.id.button_ajustes)
         buttonClick.setOnClickListener {
@@ -140,5 +141,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-*/
+
 }

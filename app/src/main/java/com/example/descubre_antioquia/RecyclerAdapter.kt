@@ -23,11 +23,12 @@ class RecyclerAdapter(val context: Context, private val sitesList: ArrayList<MyD
     R.drawable.estadio_4,
     R.drawable.jerico_5
     )
-    /*
+
     interface onItemClickListener {
         fun onItemClick(position: Int)
     }
 
+    /*
     fun setOnItemClickListener(listener: onItemClickListener) {
         mListener = listener
     }*/
@@ -66,9 +67,10 @@ class RecyclerAdapter(val context: Context, private val sitesList: ArrayList<MyD
 
 
         init {
-            //itemView.setOnClickListener {
-              //  listener.onItemClick(adapterPosition)
-            //}
+            /*
+            itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }*/
             heading = itemView.heading
             detail = itemView.detail
             titleImage = itemView.titleImage
