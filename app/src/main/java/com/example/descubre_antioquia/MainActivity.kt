@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var newRecyclerView: RecyclerView
     private lateinit var newArrayList: ArrayList<MyDataItem>
+    //private lateinit var imagesArray: ArrayList<Sites>
     lateinit var imageId: Array<Int>
     lateinit var heading: Array<String>
     lateinit var detail: Array<String>
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         //newRecyclerView.layoutManager = LinearLayoutManager(this)
         //newRecyclerView.setHasFixedSize(true)
 
-       //newArrayList = arrayListOf<Sites>()
+        //newArrayList = arrayListOf<MyDataItem>()
         //getUserdata()
     }
 
@@ -109,10 +110,10 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    /*
+/*
     private fun getUserdata() {
         for (i in imageId.indices) {
-            val sites = Sites(imageId[i], heading[i], detail[i])
+            val sites = MyDataItem(imageId[i])
             newArrayList.add(sites)
         }
 
@@ -138,6 +139,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, ajustesActivity::class.java)
             startActivity(intent)
         }
-    }*/
-
+    }
+*/
 }

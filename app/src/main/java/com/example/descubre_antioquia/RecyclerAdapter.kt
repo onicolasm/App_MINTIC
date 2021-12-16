@@ -4,17 +4,26 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.imageview.ShapeableImageView
 import kotlinx.android.synthetic.main.card_layout.view.*
 
 
 class RecyclerAdapter(val context: Context, private val sitesList: ArrayList<MyDataItem>) :
     RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
 
-/*
-    private lateinit var mListener: onItemClickListener
 
+    //private lateinit var mListener: onItemClickListener
+    private var imageId = arrayOf(
+    R.drawable.piedra_1,
+    R.drawable.santafe_2,
+    R.drawable.jardin_3,
+    R.drawable.estadio_4,
+    R.drawable.jerico_5
+    )
+    /*
     interface onItemClickListener {
         fun onItemClick(position: Int)
     }
@@ -32,12 +41,12 @@ class RecyclerAdapter(val context: Context, private val sitesList: ArrayList<MyD
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        //val currentItem = sitesList[position]
-        //holder.titleImage.setImageResource(currentItem.titleImage)
+        //val currentItem = imageId[position]
+        holder.titleImage.setImageResource(imageId[position])
         //holder.tvHeading.text = currentItem.heading
         //holder.tvDetail.text = currentItem.detail
-        holder.userId.text = sitesList[position].heading
-        holder.title.text = sitesList[position].detail
+        holder.heading.text = sitesList[position].heading
+        holder.detail.text = sitesList[position].detail
 
     }
 
@@ -48,18 +57,21 @@ class RecyclerAdapter(val context: Context, private val sitesList: ArrayList<MyD
     class MyViewHolder(itemView: View) : // add , listener: onItemClickListener
         RecyclerView.ViewHolder(itemView) {
 
-        //val titleImage: ShapeableImageView = itemView.findViewById(R.id.titleImage)
+        var titleImage: ShapeableImageView = itemView.findViewById(R.id.titleImage)
         //val tvHeading: TextView = itemView.findViewById(R.id.tvHeading)
         //val tvDetail: TextView = itemView.findViewById(R.id.tvDetail)
-        val userId: TextView
-        var title: TextView
+        val heading: TextView
+        var detail: TextView
+        //lateinit var image: ImageView
+
 
         init {
             //itemView.setOnClickListener {
               //  listener.onItemClick(adapterPosition)
             //}
-            userId = itemView.userId
-            title = itemView.title
+            heading = itemView.heading
+            detail = itemView.detail
+            titleImage = itemView.titleImage
         }
     }
 }

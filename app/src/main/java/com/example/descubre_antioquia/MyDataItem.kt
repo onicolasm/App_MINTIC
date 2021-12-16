@@ -4,7 +4,8 @@ package com.example.descubre_antioquia
 
 data class MyDataItem(
     val heading: String,
-    //val id: Int,
+    var titleImage: Int,
     val detail: String
     //val userId: Int
+
 )
