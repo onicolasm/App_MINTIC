@@ -75,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         //newRecyclerView.layoutManager = LinearLayoutManager(this)
         //newRecyclerView.setHasFixedSize(true)
 
-        newArrayList = arrayListOf<MyDataItem>()
+        //newArrayList = arrayListOf<MyDataItem>()
         getUserdata()
 
     }
@@ -100,6 +100,19 @@ class MainActivity : AppCompatActivity() {
                     responseBody as ArrayList<MyDataItem>
                 )
                 myRecyclerAdapter.notifyDataSetChanged()
+
+                myRecyclerAdapter.setOnItemClickListener(object: RecyclerAdapter.onItemClickListener{
+
+                    override fun onItemClick(position: Int) {
+                        //val newArrayList = arrayListOf<myData>()
+                        val intent = Intent(this@MainActivity, SitesActivity::class.java)
+                        intent.putExtra("heading", heading[position])
+                        intent.putExtra("imageId", imageId[position])
+                        intent.putExtra("desc", desc[position])
+
+                        startActivity(intent)
+                    }
+                })
                 recyclerView.adapter = myRecyclerAdapter
 
             }
@@ -117,9 +130,9 @@ class MainActivity : AppCompatActivity() {
           //  val sites = MyDataItem(imageId[i])
             //newArrayList.add(sites)
         //}
-    /*
+        /*
         var adapter = RecyclerAdapter(newArrayList)
-        newRecyclerView.adapter = adapter
+        newRecyclerView.adapter = RecyclerAdapter(newArrayList)
         adapter.setOnItemClickListener(object : RecyclerAdapter.onItemClickListener {
             override fun onItemClick(position: Int) {
                 //Toast.makeText(this@MainActivity, "You clicked on item no. $position",Toast.LENGTH_SHORT).show()
@@ -141,5 +154,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
 
 }

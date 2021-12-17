@@ -15,7 +15,7 @@ class RecyclerAdapter(val context: Context, private val sitesList: ArrayList<MyD
     RecyclerView.Adapter<RecyclerAdapter.MyViewHolder>() {
 
 
-    //private lateinit var mListener: onItemClickListener
+    private lateinit var mListener: onItemClickListener
     private var imageId = arrayOf(
     R.drawable.piedra_1,
     R.drawable.santafe_2,
@@ -28,17 +28,17 @@ class RecyclerAdapter(val context: Context, private val sitesList: ArrayList<MyD
         fun onItemClick(position: Int)
     }
 
-    /*
+
     fun setOnItemClickListener(listener: onItemClickListener) {
         mListener = listener
-    }*/
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(
             R.layout.card_layout, parent, false
         )
-        return MyViewHolder(itemView) //,mListener add
+        return MyViewHolder(itemView,mListener) //,mListener add
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -55,7 +55,7 @@ class RecyclerAdapter(val context: Context, private val sitesList: ArrayList<MyD
         return sitesList.size
     }
 
-    class MyViewHolder(itemView: View) : // add , listener: onItemClickListener
+    class MyViewHolder(itemView: View, listener: onItemClickListener) : // add , listener: onItemClickListener
         RecyclerView.ViewHolder(itemView) {
 
         var titleImage: ShapeableImageView = itemView.findViewById(R.id.titleImage)
@@ -67,10 +67,10 @@ class RecyclerAdapter(val context: Context, private val sitesList: ArrayList<MyD
 
 
         init {
-            /*
+
             itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
-            }*/
+            }
             heading = itemView.heading
             detail = itemView.detail
             titleImage = itemView.titleImage
